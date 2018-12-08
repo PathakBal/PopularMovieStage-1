@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    app:showAsAction="collapseActionView"
+    android:id="@+id/byPopularity"
+    android:title="@string/ByPopularity"
+    android:orderInCategory="1"/>
+    <item
+        app:showAsAction="collapseActionView"
+        android:id="@+id/byVoted"
+        android:title="@string/ByVoting"
+        android:orderInCategory="2"/>
+</menu>
