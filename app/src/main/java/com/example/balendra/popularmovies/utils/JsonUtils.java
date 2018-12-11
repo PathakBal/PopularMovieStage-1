@@ -44,7 +44,6 @@ public class JsonUtils {
                 String extractedReleaseDate = objectfromArray.getString(JSON_KEY_RELEASE_DATE);
                 String extractedVote = objectfromArray.getString(JSON_KEY_VOTE_AVERAGE);
                 String extractedOverview= objectfromArray.getString(JSON_KEY_OVERVIEW);
-                Log.d("Balendra",extractedPosterPath);
                 movieList.add(new PopularMovie(extractedPosterPath,extractedTitle,extractedOverview,extractedReleaseDate,extractedVote));
             }
         } catch (JSONException e) {

@@ -18,17 +18,28 @@ import static android.support.v4.content.ContextCompat.getSystemService;
 public class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
-    public String url= "http://api.themoviedb.org/3/movie/popular?api_key="+Constant.API_KEY;
-    public static  String HOST_NAME="http://api.themoviedb.org/";
-    public static String POPULAR_MOVIE_PATH="3/movie/popular";
+    public String url = "http://api.themoviedb.org/3/movie/popular?api_key=" + Constant.API_KEY;
+    public static String HOST_NAME = "http://api.themoviedb.org/";
+    public static String POPULAR_MOVIE_PATH = "3/movie/popular";
+    public static String TOP_VOTED_PATH = "3/movie/top_rated";
 
 
-    public static URL buildURL(String sortBy){
-        Uri builtUri = Uri.parse(HOST_NAME).buildUpon()
-                .appendEncodedPath(POPULAR_MOVIE_PATH)
-                .appendQueryParameter("api_key",Constant.API_KEY)
-                .appendQueryParameter("sort_by",sortBy)
-                .build();
+    public static URL buildURL(String sortBy) {
+
+        Uri builtUri = null;
+        if (sortBy.contains("popularity")) {
+            builtUri = Uri.parse(HOST_NAME).buildUpon()
+                    .appendEncodedPath(POPULAR_MOVIE_PATH)
+                    .appendQueryParameter("api_key", Constant.API_KEY)
+                    .appendQueryParameter("sort_by", sortBy)
+                    .build();
+        } else {
+            builtUri = Uri.parse(HOST_NAME).buildUpon()
+                    .appendEncodedPath(TOP_VOTED_PATH)
+                    .appendQueryParameter("api_key", Constant.API_KEY)
+                    .appendQueryParameter("sort_by", sortBy)
+                    .build();
+        }
         URL url = null;
         try {
             url = new URL(builtUri.toString());
