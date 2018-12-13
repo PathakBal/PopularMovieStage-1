@@ -28,10 +28,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
     MovieAdapter imageAdapter;
     List<PopularMovie> movieInfo;
-    GridView gridview;
+    @BindView(R.id.gridView) GridView gridview;
     private static final String KEY_MOVIE_LIST = "MOVIE_LIST";
     boolean isByVotedClicked = false;
     TextView errorTextView;
@@ -49,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
             movieInfo = savedInstanceState.getParcelableArrayList(KEY_MOVIE_LIST);
         }
         imageAdapter = new MovieAdapter(this, movieInfo);
-        gridview = (GridView) findViewById(R.id.gridView);
+        // gridview = (GridView) findViewById(R.id.gridView);
+        ButterKnife.bind(this);
         gridview.setAdapter(imageAdapter);
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

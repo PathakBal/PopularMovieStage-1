@@ -13,24 +13,29 @@ import com.example.balendra.popularmovies.utils.Constant;
 import com.example.balendra.popularmovies.utils.JsonUtils;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailsActivity extends AppCompatActivity {
 
-    TextView titleTextView;
-    TextView movieRating;
-    TextView releaseDateTextView;
-    ImageView moviePoster;
-    TextView descTextView;
+    @BindView(R.id.titleTextView) TextView titleTextView;
+    @BindView(R.id.ratingTextView) TextView movieRating;
+    @BindView(R.id.releaseDateTextView) TextView releaseDateTextView;
+    @BindView(R.id.posterImageView) ImageView moviePoster;
+    @BindView(R.id.overviewTextView) TextView descTextView;
     private static String POSTER_URL="http://image.tmdb.org/t/p/w185";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        titleTextView = findViewById(R.id.titleTextView);
-        movieRating = findViewById(R.id.ratingTextView);
-        releaseDateTextView = findViewById(R.id.releaseDateTextView);
-        moviePoster = findViewById(R.id.posterImageView);
-        descTextView = findViewById(R.id.overviewTextView);
+        ButterKnife.bind(this);
+
+//        titleTextView = findViewById(R.id.titleTextView);
+//        movieRating = findViewById(R.id.ratingTextView);
+//        releaseDateTextView = findViewById(R.id.releaseDateTextView);
+//        moviePoster = findViewById(R.id.posterImageView);
+//        descTextView = findViewById(R.id.overviewTextView);
 
         Intent intent = getIntent();
         PopularMovie movieClicked = intent.getExtras().getParcelable("PopularMovie");
